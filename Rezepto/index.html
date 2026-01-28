@@ -5,23 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rezepto</title>
     <link rel="stylesheet" href="style.css">
-    <!-- PDF Bibliothek -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
 </head>
 <body>
 
-<div id="loading-overlay">
-    <p>🎨 PDF wird erstellt...</p>
-</div>
-
 <div class="app-container">
-    <div id="recipe-card">
-        <!-- Hauptbild -->
-        <div class="hero-img" onclick="document.getElementById('file-main').click()">
+    <div id="recipe-card" class="card">
+        <div class="hero-upload" onclick="document.getElementById('file-main').click()">
             <img id="prev-main" class="hidden">
-            <span id="label-main">Titelbild 📤</span>
-            <input type="file" id="file-main" class="hidden" accept="image/*" onchange="process(this, 'prev-main', 'label-main')">
+            <span id="label-main" class="ui-element">📸 Titelbild auswählen</span>
+            <input type="file" id="file-main" class="hidden" accept="image/*" onchange="processImage(this, 'prev-main', 'label-main')">
         </div>
 
         <div class="content">
@@ -29,23 +21,20 @@
             
             <div class="section-label">Zutaten</div>
             <div id="list-ings"></div>
-            <button class="btn btn-add" id="btn-add-ing" onclick="addIng()">+ Zutat</button>
+            <button class="btn btn-add ui-element" onclick="addIngredient()">+ Zutat</button>
 
             <div class="section-label">Zubereitung</div>
             <div id="list-steps"></div>
-            <button class="btn btn-add" id="btn-add-step" onclick="addStep()">+ Arbeitsschritt</button>
+            <button class="btn btn-add ui-element" onclick="addStep()">+ Schritt</button>
         </div>
     </div>
 
-    <div class="ui-controls">
-        <button class="btn btn-main" onclick="exportPDF()">ALS PDF SPEICHERN 📥</button>
-        <button class="btn btn-add" style="border-color:#ddd; color:#999" onclick="if(confirm('Alles löschen?')){localStorage.clear(); location.reload();}">Zurücksetzen</button>
+    <div class="ui-controls ui-element">
+        <button class="btn btn-main" onclick="window.print()">💾 ALS PDF SPEICHERN</button>
+        <button class="btn-reset" onclick="if(confirm('Löschen?')) location.reload()">App zurücksetzen</button>
     </div>
 </div>
 
-
 <script src="script.js"></script>
 </body>
-
-
 </html>
