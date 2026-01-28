@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Rezepto</title>
+    <title>Rezepto - Gourmet App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="app-container">
     <div id="recipe-card" class="card">
+        <!-- Hauptbild -->
         <div class="hero-upload" onclick="document.getElementById('file-main').click()">
             <img id="prev-main" class="hidden">
             <span id="label-main" class="ui-element">📸 Titelbild auswählen</span>
@@ -17,6 +18,7 @@
         </div>
 
         <div class="content">
+            <!-- Titel -->
             <input type="text" class="title-input" id="inp-title" placeholder="Rezept Name">
             
             <div class="section-label">Zutaten</div>
@@ -25,13 +27,14 @@
 
             <div class="section-label">Zubereitung</div>
             <div id="list-steps"></div>
-            <button class="btn btn-add ui-element" onclick="addStep()">+ Schritt</button>
+            <button class="btn btn-add ui-element" onclick="addStep()">+ Arbeitsschritt</button>
         </div>
     </div>
 
+    <!-- UI Buttons -->
     <div class="ui-controls ui-element">
-        <button class="btn btn-main" onclick="window.print()">💾 ALS PDF SPEICHERN</button>
-        <button class="btn-reset" onclick="if(confirm('Löschen?')) location.reload()">App zurücksetzen</button>
+        <button class="btn btn-main" onclick="prepareAndPrint()">💾 ALS PDF SPEICHERN</button>
+        <button class="btn-reset" onclick="if(confirm('Alles löschen?')) location.reload()">App zurücksetzen</button>
     </div>
 </div>
 

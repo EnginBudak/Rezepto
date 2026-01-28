@@ -21,7 +21,8 @@ function addStep(t = "", i = "") {
             <b style="color:var(--primary)">SCHRITT ${stepCount}</b>
             <button class="btn-del ui-element" onclick="this.parentElement.parentElement.remove()">✕</button>
         </div>
-        <textarea placeholder="Anweisung..." rows="2" oninput="this.style.height='';this.style.height=this.scrollHeight+'px'">${t}</textarea>
+        <!-- Textareas wachsen automatisch mit dem Text mit -->
+        <textarea placeholder="Was ist zu tun?" oninput="this.style.height='';this.style.height=this.scrollHeight+'px'">${t}</textarea>
         <div class="step-img-box" onclick="document.getElementById('${fId}').click()">
             <img id="${pId}" src="${i}" class="${i ? '' : 'hidden'}">
             <span id="${lId}" class="ui-element ${i ? 'hidden' : ''}">📷 Foto hinzufügen</span>
@@ -44,7 +45,15 @@ function processImage(input, prevId, labelId) {
     }
 }
 
-// Start-Setup
+function prepareAndPrint() {
+    document.querySelectorAll('textarea').forEach(ta => {
+        ta.style.height = 'auto';
+        ta.style.height = ta.scrollHeight + 'px';
+    });
+
+    window.print();
+}
+
 window.onload = () => {
     addIngredient();
     addStep();
